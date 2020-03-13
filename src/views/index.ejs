@@ -1,0 +1,27 @@
+<%- include('partials/head')  %> 
+
+	<!-- Navbar -->
+	<%- include('partials/navbar')  %> 
+
+	<div class="container my-5">
+		<div class="row">
+			<% products.forEach(product => { %>
+				<div class="col-6 col-lg-3 my-3">
+					<div class="card">
+						<img src="<%= product.image %>" class="card-img-top">
+						<div class="card-body">
+							<h5 class="card-title" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><%= product.name %></h5>
+							<p class="card-text"><%= product.description.slice(0, 80) %>...</p>
+							<form action="/cart" method="post">
+								<input name="product" type="hidden" value="<%= product.id %>">
+								<button type="submit" class="btn btn-success btn-sm">Agregar al carrito</but>
+							</form>
+						</div>
+					</div>
+				</div>
+			<% }) %>
+		</div>
+	</div>
+	
+<!-- Footer -->
+<%- include('partials/footer')  %>
